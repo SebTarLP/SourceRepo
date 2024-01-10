@@ -1,9 +1,6 @@
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       tag:
@@ -38,8 +35,8 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            kosier/task2-app:latest
-            kosier/task2-app:${{ inputs.tag }}
+            kosier/webapplication:latest
+            kosier/webapplication:${{ inputs.tag }}
             
   kubernetesCI:
     runs-on: ubuntu-latest
@@ -58,7 +55,7 @@ jobs:
 
       - name: Update Manifest
         run: |
-          sed -i "s/task2-app:.*/task2-app:${{ inputs.tag }}/g" deployment.yaml
+          sed -i "s/webapplication:.*/webapplication:${{ inputs.tag }}/g" deployment.yaml
 
       - name: Commit and Push
         run: |
