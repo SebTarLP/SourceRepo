@@ -38,8 +38,8 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            kosier/task2:latest
-            kosier/task2:${{ inputs.tag }}
+            kosier/task2-app:latest
+            kosier/task2-app:${{ inputs.tag }}
             
   kubernetesCI:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
 
       - name: Update Manifest
         run: |
-          sed -i "s/task2:*/task2:${{ inputs.tag }}/g" deployment.yaml
+          sed -i "s/task2-app:.*/task2-app:${{ inputs.tag }}/g" deployment.yaml
 
       - name: Commit and Push
         run: |
