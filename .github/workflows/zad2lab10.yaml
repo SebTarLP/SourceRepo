@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SebTarLP/ConfigRepo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GHUB_TOKEN }}
 
       - name: Configure Git
         run: |
